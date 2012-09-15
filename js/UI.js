@@ -1,7 +1,7 @@
 
 /*
 	
-	The UI object. Handles getting the values and parameters from the UI.
+	Handles getting the values and parameters from the UI.
 
 	@author 		Bheesham Persaud <bheesham.persaud@live.ca>
 	@copyright 	Copyright (C) 2012 Bheesham Persaud.
@@ -15,7 +15,8 @@
     this.fields = {
       search: document.getElementById("search"),
       subject: document.getElementById("subject"),
-      replace: document.getElementById("replace")
+      replace: document.getElementById("replace"),
+      result: document.getElementById("result")
     };
     this.values = {
       search: "",
@@ -23,7 +24,6 @@
       replace: ""
     };
     this.params = {
-      case_sensitive: false,
       debug: false
     };
     return void 0;

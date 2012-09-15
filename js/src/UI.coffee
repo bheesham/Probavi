@@ -1,6 +1,6 @@
 ###
 	
-	The UI object. Handles getting the values and parameters from the UI.
+	Handles getting the values and parameters from the UI.
 
 	@author 		Bheesham Persaud <bheesham.persaud@live.ca>
 	@copyright 	Copyright (C) 2012 Bheesham Persaud.
@@ -14,6 +14,7 @@ this.UI = ->
 		search: document.getElementById("search")
 		subject: document.getElementById("subject")
 		replace: document.getElementById("replace")
+		result: document.getElementById("result")
 	}
 
 	this.values = {
@@ -23,7 +24,6 @@ this.UI = ->
 	}
 
 	this.params = {
-		case_sensitive: false
 		debug: 					false
 	}
 	undefined

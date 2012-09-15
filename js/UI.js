@@ -1,7 +1,7 @@
 
 /*
 	
-	The Tester object that.
+	The UI object. Handles getting the values and parameters from the UI.
 
 	@author 		Bheesham Persaud <bheesham.persaud@live.ca>
 	@copyright 	Copyright (C) 2012 Bheesham Persaud.
@@ -11,7 +11,7 @@
 
 (function() {
 
-  this.Tester = function() {
+  this.UI = function() {
     this.fields = {
       search: document.getElementById("search"),
       subject: document.getElementById("subject"),
@@ -29,7 +29,7 @@
     return void 0;
   };
 
-  Tester.prototype.update_fields = function() {
+  UI.prototype.update_fields = function() {
     var field, _i, _len, _ref;
     _ref = Object.keys(this.values);
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -41,7 +41,7 @@
     return void 0;
   };
 
-  Tester.prototype.update_params = function() {
+  UI.prototype.update_params = function() {
     var param, _i, _len, _ref;
     _ref = Object.keys(this.params);
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {

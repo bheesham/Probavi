@@ -1,6 +1,6 @@
 ###
 	
-	The Tester object. The controller.
+	The UI object. Handles getting the values and parameters from the UI.
 
 	@author 		Bheesham Persaud <bheesham.persaud@live.ca>
 	@copyright 	Copyright (C) 2012 Bheesham Persaud.
@@ -9,7 +9,7 @@
 ###
 
 
-this.Tester = () ->
+this.UI = ->
 	this.fields = {
 		search: document.getElementById("search")
 		subject: document.getElementById("subject")
@@ -29,7 +29,7 @@ this.Tester = () ->
 	undefined
 
 # Updates the fields
-Tester.prototype.update_fields = ->
+UI.prototype.update_fields = ->
 	# Simply looks at the Options checkboxes and returns ticked or not
 	for field in Object.keys(this.values)
 		if this.fields[field]?
@@ -37,7 +37,7 @@ Tester.prototype.update_fields = ->
 	undefined
 
 # Updates the Regular Expression parameters
-Tester.prototype.update_params = ->
+UI.prototype.update_params = ->
 	# Simply looks at the Options checkboxes and returns ticked or not
 	for param in Object.keys(this.params)
 		if document.getElementById(param)?

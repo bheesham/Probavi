@@ -8,20 +8,23 @@
 
 ###
 
-tester = new Tester
+ui = new UI
+highlighter = new Highlighter
+
+highlighter.init()
 
 # Make sure that if anything changes, we update everything
-for param in Object.keys(tester.params)
+for param in Object.keys(ui.params)
 	document.getElementById(param).onclick = ->
-		if tester.params.debug == true
+		if ui.params.debug == true
 			console.log(this.id + " has changed to: " + this.checked.toString())
-		tester.update_params()
+		ui.update_params()
 
-for field in Object.keys(tester.fields)
-	tester.fields[field].onkeyup = ->
-		if tester.params.debug == true
+for field in Object.keys(ui.fields)
+	ui.fields[field].onkeyup = ->
+		if ui.params.debug == true
 			console.log(this.id + " has changed to: " + this.value)
-		tester.update_fields()
+		ui.update_fields()
 
-if tester.debug == true
-	return this.tester = tester
+if ui.debug == true
+	return this.ui = ui

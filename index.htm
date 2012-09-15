@@ -11,7 +11,7 @@
 		<meta property="og:image" content="">
 		<meta property="og:site_name" content="Regular Expression tester">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/Probavi.css">
 	</head>
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top">
@@ -55,27 +55,16 @@
 			
 			<div class="row">
 				<div class="span12">
-					<small><label for="subject">Subject:</label></small>
+					<small><label for="subject">Subject:</label></small> <br>
 				</div>
 			</div>
-			
+
 			<div class="row">
-				<div class="span1">
-					<div id="line-matches">
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-						<div class="line">&nbsp;</div>
-					</div>
-				</div>
-				<div class="span11">
+				<div class="span12">
 					<textarea id="subject"></textarea>
+					<div id="highlighter">
+						<div class="line"></div>
+					</div>
 				</div>
 			</div>
 
@@ -85,7 +74,8 @@
 				</footer>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/Tester.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/UI.js"></script>
+		<script type="text/javascript" src="js/Highlighter.js"></script>
+		<script type="text/javascript" src="js/Probavi.js"></script>
 	</body>
 </html>

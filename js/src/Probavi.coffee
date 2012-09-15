@@ -11,19 +11,23 @@
 ui = new UI
 tester = new Tester
 
+update = (ui) ->
+	ui.fields.result.innerText = tester.run(ui.values.search, ui.values.subject, ui.values.replace)
+
 # Make sure that if anything changes, we update everything
 for param in Object.keys(ui.params)
 	document.getElementById(param).onclick = ->
 		if ui.params.debug == true
 			console.log(this.id + " has changed to: " + this.checked.toString())
 		ui.update_params()
+		update(ui)
 
 for field in Object.keys(ui.fields)
 	ui.fields[field].onkeyup = ->
 		if ui.params.debug == true
 			console.log(this.id + " has changed to: " + this.value)
 		ui.update_fields()
-		ui.fields.result.innerText = tester.run(ui.values.search, ui.values.subject, ui.values.replace)
+		update(ui)
 
 ui.fields.search.focus()
 

@@ -10,11 +10,15 @@
 
 
 (function() {
-  var field, param, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
+  var field, param, tester, ui, update, _i, _j, _len, _len1, _ref, _ref1;
 
   ui = new UI;
 
   tester = new Tester;
+
+  update = function(ui) {
+    return ui.fields.result.innerText = tester.run(ui.values.search, ui.values.subject, ui.values.replace);
+  };
 
   _ref = Object.keys(ui.params);
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -23,7 +27,8 @@
       if (ui.params.debug === true) {
         console.log(this.id + " has changed to: " + this.checked.toString());
       }
-      return ui.update_params();
+      ui.update_params();
+      return update(ui);
     };
   }
 
@@ -35,7 +40,7 @@
         console.log(this.id + " has changed to: " + this.value);
       }
       ui.update_fields();
-      return ui.fields.result.innerText = tester.run(ui.values.search, ui.values.subject, ui.values.replace);
+      return update(ui);
     };
   }
 

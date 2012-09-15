@@ -17,7 +17,7 @@
 
   Tester.prototype.run = function(search, subject, replace) {
     var result;
-    if (replace != null) {
+    if ((replace != null) && replace.length > 0) {
       result = new Function("search", "subject", "replace", "return subject.replace(search, replace)");
     } else {
       result = new Function("search", "subject", "return subject.match(search)");

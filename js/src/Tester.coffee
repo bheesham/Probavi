@@ -12,7 +12,7 @@ this.Tester = ->
 	undefined
 
 Tester.prototype.run = (search, subject, replace) ->
-	if replace?
+	if replace? and replace.length > 0
 		result = new Function("search", "subject", "replace",
 		"return subject.replace(search, replace)")
 	else

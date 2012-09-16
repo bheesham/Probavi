@@ -33,8 +33,8 @@ footer {
 }
 
 label {
-	margin: 0px;
-	padding: 0px;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #result {

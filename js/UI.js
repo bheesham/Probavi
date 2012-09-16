@@ -24,9 +24,27 @@
       replace: ""
     };
     this.params = {
-      debug: false
+      global: false,
+      ignorecase: false,
+      multiline: false
     };
     return void 0;
+  };
+
+  UI.prototype.debug = function() {
+    return document.getElementById("debug").checked;
+  };
+
+  UI.prototype.log = function(str) {
+    if (this.debug()) {
+      return console.log(arg);
+    }
+  };
+
+  UI.prototype.dir = function(obj) {
+    if (this.debug()) {
+      return console.dir(obj);
+    }
   };
 
   UI.prototype.update_fields = function() {

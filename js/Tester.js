@@ -15,14 +15,21 @@
     return void 0;
   };
 
-  Tester.prototype.run = function(search, subject, replace) {
-    var result;
-    if ((replace != null) && replace.length > 0) {
-      result = new Function("search", "subject", "replace", "return subject.replace(search, replace)");
-    } else {
-      result = new Function("search", "subject", "return subject.match(search)");
+  Tester.prototype.run = function(search, subject, params, replace) {
+    var param, regexp, result, _i, _len;
+    for (_i = 0, _len = params.length; _i < _len; _i++) {
+      param = params[_i];
+      if (param === true) {
+        console.log(param);
+      }
     }
-    return result(search, subject, replace);
+    regexp = new RegExp(subject, "gim");
+    if ((replace != null) && replace.length > 0) {
+      result = new Function("regexp", "subject", "replace", "return subject.replace(regexp, replace");
+    } else {
+      result = new Function("regexp", "subject", "return subject.match(regexp)");
+    }
+    return result(regexp, subject, replace);
   };
 
 }).call(this);

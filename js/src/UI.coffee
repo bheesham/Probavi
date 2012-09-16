@@ -24,9 +24,24 @@ this.UI = ->
 	}
 
 	this.params = {
-		debug: 					false
+		global: 				false
+		ignorecase: 		false
+		multiline: 			false
 	}
+
 	undefined
+
+# Our own little logger.
+UI.prototype.debug = ->
+	return document.getElementById("debug").checked
+
+UI.prototype.log = (str) ->
+	if this.debug()
+		console.log(arg)
+
+UI.prototype.dir = (obj) ->
+	if this.debug()
+		console.dir(obj)
 
 # Updates the fields
 UI.prototype.update_fields = ->

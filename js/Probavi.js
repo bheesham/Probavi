@@ -10,17 +10,17 @@
 
 
 (function() {
-  var field, param, tester, ui, update, _i, _j, _len, _len1, _ref, _ref1;
+  var field, get_result, param, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
 
   ui = new UI;
 
   tester = new Tester;
 
-  update = function(ui) {
+  get_result = function(ui, tester) {
     var item, match, result, _i, _len, _results;
     ui.fields.result.innerText = "";
-    if (ui.values.subject.length > 0 && ui.values.search.length > 0) {
-      result = tester.run(ui.values.search, ui.values.subject, ui.params, ui.values.replace);
+    if (ui.values.subject.length > 0 && ui.values.regexp.length > 0) {
+      result = tester.run(ui.values.regexp, ui.values.subject, ui.params, ui.values.replace);
       ui.log("The result's type is " + typeof result);
       ui.log("The result contained:");
       ui.dir(result);
@@ -55,7 +55,7 @@
     document.getElementById(param).onclick = function() {
       ui.log(this.id + " has changed to: " + this.checked.toString());
       ui.update_params();
-      return update(ui);
+      return get_result(ui, tester);
     };
   }
 
@@ -65,7 +65,7 @@
     ui.fields[field].onkeyup = function() {
       ui.log(this.id + " has changed to: " + this.value);
       ui.update_fields();
-      return update(ui);
+      return get_result(ui, tester);
     };
   }
 
@@ -73,13 +73,24 @@
 
   ui.update_fields();
 
-  update(ui);
+  get_result(ui, tester);
 
-  ui.fields.search.focus();
+  ui.fields.regexp.focus();
 
   if (ui.debug()) {
     this.ui = ui;
     this.tester = tester;
   }
+
+  document.getElementById("save-btn").onclick = function() {
+    ui.dir(ui.values);
+    ui.dir(ui.params);
+    return void 0;
+  };
+
+  $('#expressions').modal({
+    keyboard: false,
+    show: false
+  });
 
 }).call(this);

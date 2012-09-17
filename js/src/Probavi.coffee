@@ -11,10 +11,10 @@
 ui = new UI
 tester = new Tester
 
-update = (ui) ->
+get_result = (ui, tester) ->
 	ui.fields.result.innerText = ""
-	if ui.values.subject.length > 0 and ui.values.search.length > 0
-		result = tester.run(ui.values.search, ui.values.subject, 
+	if ui.values.subject.length > 0 and ui.values.regexp.length > 0
+		result = tester.run(ui.values.regexp, ui.values.subject, 
 		ui.params, ui.values.replace)
 		
 		ui.log("The result's type is " + typeof result)
@@ -42,21 +42,32 @@ for param in Object.keys(ui.params)
 	document.getElementById(param).onclick = ->
 		ui.log(this.id + " has changed to: " + this.checked.toString())
 		ui.update_params()
-		update(ui)
+		get_result(ui, tester)
 
 for field in Object.keys(ui.fields)
 	ui.fields[field].onkeyup = ->
 		ui.log(this.id + " has changed to: " + this.value)
 		ui.update_fields()
-		update(ui)
+		get_result(ui, tester)
 
 # Let's update once when we load the page
 ui.update_params()
 ui.update_fields()
-update(ui)
+get_result(ui, tester)
 
-ui.fields.search.focus()
+ui.fields.regexp.focus()
 
 if ui.debug()
 	this.ui = ui
 	this.tester = tester
+
+document.getElementById("save-btn").onclick = ->
+	ui.log("Saving content")
+	
+	undefined
+
+# Activate the modal
+$('#expressions').modal({
+  keyboard: false
+  show: false
+})

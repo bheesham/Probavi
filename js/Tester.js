@@ -15,20 +15,20 @@
     return void 0;
   };
 
-  Tester.prototype.run = function(search, subject, params, replace) {
-    var r_params, regexp, result;
-    r_params = "";
+  Tester.prototype.run = function(regexp, subject, params, replace) {
+    var result, __r, __r_params;
+    __r_params = "";
     if (params.ignorecase) {
-      r_params += "i";
+      __r_params += "i";
     }
     if (params.global) {
-      r_params += "g";
+      __r_params += "g";
     }
     if (params.multiline) {
-      r_params += "m";
+      __r_params += "m";
     }
     try {
-      regexp = new RegExp(search, r_params);
+      __r = new RegExp(regexp, __r_params);
     } catch (e) {
       return -1;
     }
@@ -37,7 +37,7 @@
     } else {
       result = new Function("regexp", "subject", "return subject.match(regexp)");
     }
-    return result(regexp, subject, replace);
+    return result(__r, subject, replace);
   };
 
 }).call(this);

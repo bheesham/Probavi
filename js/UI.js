@@ -13,23 +13,34 @@
 
   this.UI = function() {
     this.fields = {
-      search: document.getElementById("search"),
+      regexp: document.getElementById("regexp"),
       subject: document.getElementById("subject"),
       replace: document.getElementById("replace"),
       result: document.getElementById("result"),
       global: document.getElementById("global"),
       ignorecase: document.getElementById("ignorecase"),
-      multiline: document.getElementById("multiline")
+      multiline: document.getElementById("multiline"),
+      "save-name": document.getElementById("save-name"),
+      "save-regexp": document.getElementById("save-regexp"),
+      "save-global": document.getElementById("save-global"),
+      "save-ignorecase": document.getElementById("save-ignorecase"),
+      "save-multiline": document.getElementById("save-multiline")
     };
     this.values = {
-      search: "",
+      regexp: "",
       subject: "",
-      replace: ""
+      replace: "",
+      "save-name": "",
+      "save-regexp": "",
+      "save-global": ""
     };
     this.params = {
       global: false,
       ignorecase: false,
-      multiline: false
+      multiline: false,
+      "save-global": false,
+      "save-ignorecase": false,
+      "save-multiline": false
     };
     return void 0;
   };

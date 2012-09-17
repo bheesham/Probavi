@@ -76,12 +76,15 @@ document.getElementById("save-btn").onclick = ->
 	save_id = expression.save(data)
 	ui.log("Saved with id: " + save_id)
 
+	# Reset them to their original state
 	ui.fields["save-name"].value = 		""
 	ui.fields["save-regexp"].value = 	""
 
 	ui.fields["save-global"].checked = 			true	
 	ui.fields["save-ignorecase"].checked = 	true
 	ui.fields["save-multiline"].checked = 	false
+
+# Do loading here
 
 # Activate the modal
 $('#expressions').modal({

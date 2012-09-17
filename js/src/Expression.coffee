@@ -27,5 +27,5 @@ Expression.prototype.save = (data) ->
 	return id
 
 # Load from cache
-Expression.prototype.load = (id, ui) ->
+Expression.prototype.load = (id) ->
 	undefined

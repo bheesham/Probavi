@@ -24,15 +24,24 @@
       ui.log("The result's type is " + typeof result);
       ui.log("The result contained:");
       ui.dir(result);
-      if (typeof result === "object") {
-        _results = [];
-        for (_i = 0, _len = result.length; _i < _len; _i++) {
-          item = result[_i];
-          _results.push(ui.fields.result.innerHTML += item + " <br>");
+      try {
+        if (typeof result === "object") {
+          _results = [];
+          for (_i = 0, _len = result.length; _i < _len; _i++) {
+            item = result[_i];
+            _results.push(ui.fields.result.innerHTML += item + " <br>");
+          }
+          return _results;
+        } else if (result === -1) {
+          return ui.fields.result.innerText = "Syntax error";
+        } else {
+          return ui.fields.result.innerText = result;
         }
-        return _results;
-      } else {
-        return ui.fields.result.innerText = result;
+      } catch (e) {
+        ui.dir(e);
+        if (e.type === "non_object_property_load") {
+          return ui.fields.result.innerText = "No matches";
+        }
       }
     }
   };

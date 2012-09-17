@@ -25,12 +25,15 @@ update = (ui) ->
 			if typeof result == "object"
 				for item in result
 					ui.fields.result.innerHTML += item + " <br>"
+			else if result == -1
+				ui.fields.result.innerText = "Syntax error"
 			else
 				ui.fields.result.innerText = result
-		catch e if e typeof TypeError
-			undefined
-		catch e if e typeof SyntaxError
-			
+		catch e
+			ui.dir(e)
+			if e.type == "non_object_property_load"
+				ui.fields.result.innerText = "No matches"
+
 # Make sure that if anything changes, we update everything
 for param in Object.keys(ui.params)
 	document.getElementById(param).onclick = ->

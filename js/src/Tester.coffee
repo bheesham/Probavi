@@ -16,10 +16,11 @@ Tester.prototype.run = (search, subject, params, replace) ->
 		if param == true
 			console.log(param)
 
-	regexp = new RegExp(search, "gim")
+	try
+		regexp = new RegExp(search, "gim")
+	catch e
+		return -1
 
-	
-	
 	if replace? and replace.length > 0
 		result = new Function("regexp", "subject", "replace"
 		"return subject.replace(regexp, replace)")

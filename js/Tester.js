@@ -23,7 +23,11 @@
         console.log(param);
       }
     }
-    regexp = new RegExp(search, "gim");
+    try {
+      regexp = new RegExp(search, "gim");
+    } catch (e) {
+      return -1;
+    }
     if ((replace != null) && replace.length > 0) {
       result = new Function("regexp", "subject", "replace", "return subject.replace(regexp, replace)");
     } else {

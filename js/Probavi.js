@@ -17,7 +17,7 @@
   tester = new Tester;
 
   update = function(ui) {
-    var item, result, _i, _len, _results;
+    var item, match, result, _i, _len, _results;
     ui.fields.result.innerText = "";
     if (ui.values.subject.length > 0 && ui.values.search.length > 0) {
       result = tester.run(ui.values.search, ui.values.subject, ui.params, ui.values.replace);
@@ -26,10 +26,13 @@
       ui.dir(result);
       try {
         if (typeof result === "object") {
+          match = 0;
           _results = [];
           for (_i = 0, _len = result.length; _i < _len; _i++) {
             item = result[_i];
-            _results.push(ui.fields.result.innerHTML += item + " <br>");
+            ui.fields.result.innerHTML += "(" + match + ") ";
+            ui.fields.result.innerHTML += item + " <br>";
+            _results.push(match++);
           }
           return _results;
         } else if (result === -1) {

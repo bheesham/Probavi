@@ -16,15 +16,19 @@
   };
 
   Tester.prototype.run = function(search, subject, params, replace) {
-    var param, regexp, result, _i, _len;
-    for (_i = 0, _len = params.length; _i < _len; _i++) {
-      param = params[_i];
-      if (param === true) {
-        console.log(param);
-      }
+    var r_params, regexp, result;
+    r_params = "";
+    if (params.ignorecase) {
+      r_params += "i";
+    }
+    if (params.global) {
+      r_params += "g";
+    }
+    if (params.multiline) {
+      r_params += "m";
     }
     try {
-      regexp = new RegExp(search, "gim");
+      regexp = new RegExp(search, r_params);
     } catch (e) {
       return -1;
     }

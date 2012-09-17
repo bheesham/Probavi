@@ -12,12 +12,18 @@ this.Tester = ->
 	undefined
 
 Tester.prototype.run = (search, subject, params, replace) ->
-	for param in params
-		if param == true
-			console.log(param)
+	
+	r_params = ""
+
+	if params.ignorecase
+		r_params += "i"
+	if params.global
+		r_params += "g"
+	if params.multiline
+		r_params += "m"
 
 	try
-		regexp = new RegExp(search, "gim")
+		regexp = new RegExp(search, r_params)
 	catch e
 		return -1
 

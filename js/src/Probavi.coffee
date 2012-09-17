@@ -23,8 +23,11 @@ update = (ui) ->
 
 		try
 			if typeof result == "object"
+				match = 0
 				for item in result
+					ui.fields.result.innerHTML += "("  + match + ") "
 					ui.fields.result.innerHTML += item + " <br>"
+					match++
 			else if result == -1
 				ui.fields.result.innerText = "Syntax error"
 			else

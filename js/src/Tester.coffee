@@ -14,11 +14,15 @@ this.Tester = ->
 Tester.prototype.run = (search, subject, params, replace) ->
 	for param in params
 		if param == true
-			console.log(param)	
-	regexp = new RegExp(subject, "gim")
+			console.log(param)
+
+	regexp = new RegExp(search, "gim")
+
+	
+	
 	if replace? and replace.length > 0
 		result = new Function("regexp", "subject", "replace"
-		"return subject.replace(regexp, replace")
+		"return subject.replace(regexp, replace)")
 	else
 		result = new Function("regexp", "subject",
 		"return subject.match(regexp)")

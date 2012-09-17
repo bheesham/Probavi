@@ -16,7 +16,10 @@
       search: document.getElementById("search"),
       subject: document.getElementById("subject"),
       replace: document.getElementById("replace"),
-      result: document.getElementById("result")
+      result: document.getElementById("result"),
+      global: document.getElementById("global"),
+      ignorecase: document.getElementById("ignorecase"),
+      multiline: document.getElementById("multiline")
     };
     this.values = {
       search: "",
@@ -37,7 +40,7 @@
 
   UI.prototype.log = function(str) {
     if (this.debug()) {
-      return console.log(arg);
+      return console.log(str);
     }
   };
 

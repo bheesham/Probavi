@@ -23,9 +23,9 @@
         console.log(param);
       }
     }
-    regexp = new RegExp(subject, "gim");
+    regexp = new RegExp(search, "gim");
     if ((replace != null) && replace.length > 0) {
-      result = new Function("regexp", "subject", "replace", "return subject.replace(regexp, replace");
+      result = new Function("regexp", "subject", "replace", "return subject.replace(regexp, replace)");
     } else {
       result = new Function("regexp", "subject", "return subject.match(regexp)");
     }

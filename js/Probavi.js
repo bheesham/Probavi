@@ -21,7 +21,7 @@
     ui.fields.result.innerText = "";
     if (ui.values.subject.length > 0 && ui.values.search.length > 0) {
       result = tester.run(ui.values.search, ui.values.subject, ui.params, ui.values.replace);
-      ui.log("The result's type is" + typeof result);
+      ui.log("The result's type is " + typeof result);
       ui.log("The result contained:");
       ui.dir(result);
       if (typeof result === "object") {

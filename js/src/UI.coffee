@@ -11,16 +11,21 @@
 
 this.UI = ->
 	this.fields = {
-		search: document.getElementById("search")
-		subject: document.getElementById("subject")
-		replace: document.getElementById("replace")
-		result: document.getElementById("result")
+		search: 	document.getElementById("search")
+		subject: 	document.getElementById("subject")
+		replace: 	document.getElementById("replace")
+		
+		result: 	document.getElementById("result")
+		
+		global: 		document.getElementById("global")
+		ignorecase: document.getElementById("ignorecase")
+		multiline: 	document.getElementById("multiline")
 	}
 
 	this.values = {
-		search: ""
-		subject: ""
-		replace: ""
+		search: 	""
+		subject: 	""
+		replace: 	""
 	}
 
 	this.params = {
@@ -37,7 +42,7 @@ UI.prototype.debug = ->
 
 UI.prototype.log = (str) ->
 	if this.debug()
-		console.log(arg)
+		console.log(str)
 
 UI.prototype.dir = (obj) ->
 	if this.debug()

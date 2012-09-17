@@ -15,11 +15,18 @@
     return this;
   };
 
-  Expression.prototype.save = function(name, regexp, params, ui) {
-    this.name = name;
-    this.regexp = regexp;
-    this.params = params;
-    return void 0;
+  Expression.prototype.save = function(data) {
+    var id, saved;
+    id = Math.round(new Date().getTime() / 1000);
+    locache.session.set(id, data);
+    saved = locache.session.get("saved");
+    if (saved != null) {
+      saved.push(id);
+    } else {
+      saved = [id];
+    }
+    locache.session.set("saved", saved);
+    return id;
   };
 
   Expression.prototype.load = function(id, ui) {

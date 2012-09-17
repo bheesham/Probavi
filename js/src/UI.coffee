@@ -76,5 +76,5 @@ UI.prototype.update_params = ->
 	# Simply looks at the Options checkboxes and returns ticked or not
 	for param in Object.keys(this.params)
 		if document.getElementById(param)?
-			this.params[param] = document.getElementById(param).checked
+			this.params[param] = this.fields[param].checked
 	undefined

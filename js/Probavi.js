@@ -10,11 +10,13 @@
 
 
 (function() {
-  var field, get_result, param, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
+  var expression, field, get_result, param, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
 
   ui = new UI;
 
   tester = new Tester;
+
+  expression = new Expression;
 
   get_result = function(ui, tester) {
     var item, match, result, _i, _len, _results;
@@ -83,14 +85,29 @@
   }
 
   document.getElementById("save-btn").onclick = function() {
-    ui.dir(ui.values);
-    ui.dir(ui.params);
-    return void 0;
+    var data, save_id;
+    ui.log("Saving content");
+    data = {
+      name: ui.values["save-name"],
+      regexp: ui.values["save-regexp"],
+      global: ui.params["save-global"],
+      ignorecase: ui.params["save-ignorecase"],
+      multiline: ui.params["save-multiline"]
+    };
+    save_id = expression.save(data);
+    ui.log("Saved with id: " + save_id);
+    ui.fields["save-name"].value = "";
+    ui.fields["save-regexp"].value = "";
+    ui.fields["save-global"].checked = true;
+    ui.fields["save-ignorecase"].checked = true;
+    return ui.fields["save-multiline"].checked = false;
   };
 
   $('#expressions').modal({
     keyboard: false,
     show: false
   });
+
+  console.dir(locache.session.get("saved"));
 
 }).call(this);

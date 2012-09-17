@@ -79,7 +79,7 @@
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       param = _ref[_i];
       if (document.getElementById(param) != null) {
-        this.params[param] = document.getElementById(param).checked;
+        this.params[param] = this.fields[param].checked;
       }
     }
     return void 0;

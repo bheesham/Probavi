@@ -12,11 +12,19 @@ this.Expression = ->
 	return this
 
 # Save to cache
-Expression.prototype.save = (name, regexp, params, ui) ->
-	this.name 		= name
-	this.regexp 	= regexp
-	this.params 	= params
-	undefined
+Expression.prototype.save = (data) ->
+	# Generate an ID based on the time
+	id = Math.round(new Date().getTime() / 1000)
+	locache.session.set(id, data)
+
+	# Be sure to add this to the list of saved
+	saved = locache.session.get("saved")
+	if saved?
+		saved.push(id)
+	else
+		saved = [id]
+	locache.session.set("saved", saved)
+	return id
 
 # Load from cache
 Expression.prototype.load = (id, ui) ->

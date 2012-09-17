@@ -10,6 +10,7 @@
 
 ui = new UI
 tester = new Tester
+expression = new Expression
 
 get_result = (ui, tester) ->
 	ui.fields.result.innerText = ""
@@ -63,11 +64,29 @@ if ui.debug()
 
 document.getElementById("save-btn").onclick = ->
 	ui.log("Saving content")
+	data = {
+		name: 	ui.values["save-name"]
+		regexp: ui.values["save-regexp"]
+
+		global: 		ui.params["save-global"]
+		ignorecase:	ui.params["save-ignorecase"]
+		multiline: 	ui.params["save-multiline"]
+	}
 	
-	undefined
+	save_id = expression.save(data)
+	ui.log("Saved with id: " + save_id)
+
+	ui.fields["save-name"].value = 		""
+	ui.fields["save-regexp"].value = 	""
+
+	ui.fields["save-global"].checked = 			true	
+	ui.fields["save-ignorecase"].checked = 	true
+	ui.fields["save-multiline"].checked = 	false
 
 # Activate the modal
 $('#expressions').modal({
   keyboard: false
   show: false
 })
+
+console.dir(locache.session.get("saved"))

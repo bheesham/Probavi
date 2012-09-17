@@ -69,10 +69,17 @@
     };
   }
 
+  ui.update_params();
+
+  ui.update_fields();
+
+  update(ui);
+
   ui.fields.search.focus();
 
   if (ui.debug()) {
-    return this.ui = ui;
+    this.ui = ui;
+    this.tester = tester;
   }
 
 }).call(this);

@@ -50,7 +50,13 @@ for field in Object.keys(ui.fields)
 		ui.update_fields()
 		update(ui)
 
+# Let's update once when we load the page
+ui.update_params()
+ui.update_fields()
+update(ui)
+
 ui.fields.search.focus()
 
 if ui.debug()
-	return this.ui = ui
+	this.ui = ui
+	this.tester = tester

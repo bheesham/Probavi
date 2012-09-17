@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="span4">
 					<label for="search"><small>Search:</small></label>
-					<input type="text" id="search" class="input-xlarge">
+					<input type="text" id="search" class="input-xlarge" value="([a-z]+)">
 				</div>
 
 				<div class="span4">
@@ -48,8 +48,8 @@
 			<div class="row">
 				<div class="span12">
 					<small>Options</small><br>
-					<label for="global"><input type="checkbox" id="global"> Global</label> 
-					<label for="ignorecase"><input type="checkbox" id="ignorecase"> Case insensitive</label> 
+					<label for="global"><input type="checkbox" id="global" checked="true"> Global</label> 
+					<label for="ignorecase"><input type="checkbox" id="ignorecase" checked="true"> Case insensitive</label> 
 					<label for="multiline"><input type="checkbox" id="multiline"> Multi-line</label> 
 					<label for="debug"><input type="checkbox" id="debug"> Debug</label> 
 				</div>
@@ -58,7 +58,7 @@
 			<div class="row">
 				<div class="span6">
 					<label for="subject"><small>Subject:</small></label>
-					<textarea id="subject"></textarea>
+					<textarea id="subject">Woah, this thing matches all the words in a sentence, or paragraph. No punctuation though! It also ignores case.</textarea>
 				</div>
 				<div class="span6">
 					<small>Result: </small>

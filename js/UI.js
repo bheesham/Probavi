@@ -78,7 +78,7 @@
     _ref = Object.keys(this.params);
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       param = _ref[_i];
-      if (document.getElementById(param) != null) {
+      if (this.fields[param] != null) {
         this.params[param] = this.fields[param].checked;
       }
     }

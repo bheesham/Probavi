@@ -28,7 +28,7 @@ footer {
 
 #subject {
 	width: 100%;
-	height: 350px;
+	height: 300px;
 	line-height: 20px;
 }
 
@@ -38,7 +38,7 @@ label {
 }
 
 #result {
-	height: 350px;
+	height: 300px;
 	font-family: monospace;
 	padding: 3px;
 

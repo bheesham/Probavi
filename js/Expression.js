@@ -29,7 +29,7 @@
     return id;
   };
 
-  Expression.prototype.load = function(id, ui) {
+  Expression.prototype.load = function(id) {
     return void 0;
   };
 

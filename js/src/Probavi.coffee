@@ -62,6 +62,15 @@ if ui.debug()
 	this.ui = ui
 	this.tester = tester
 
+document.getElementById("save-now-expression").onclick = ->
+	ui.log("Saving new content")
+	ui.fields["save-regexp"].value = 				ui.fields.regexp.value
+	ui.fields["save-global"].checked = 			ui.fields.global.checked
+	ui.fields["save-ignorecase"].checked = 	ui.fields.ignorecase.checked
+	ui.fields["save-multiline"].checked = 	ui.fields.multiline.checked
+	$('#expressions').modal("toggle")
+	undefined
+
 document.getElementById("save-btn").onclick = ->
 	ui.log("Saving content")
 	data = {
@@ -91,5 +100,3 @@ $('#expressions').modal({
   keyboard: false
   show: false
 })
-
-console.dir(locache.session.get("saved"))

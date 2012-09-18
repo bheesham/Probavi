@@ -49,3 +49,8 @@ label {
 	height: 200px;
 	overflow-y: scroll;
 }
+
+.load-button {
+	display: inline-block;
+	margin-left: 10px;
+}

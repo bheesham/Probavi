@@ -93,7 +93,48 @@ document.getElementById("save-btn").onclick = ->
 	ui.fields["save-ignorecase"].checked = 	true
 	ui.fields["save-multiline"].checked = 	false
 
+	reload_saved(ui, expression)
+
 # Do loading here
+reload_saved = (ui, expression) ->
+	# First, clear the saved ones
+	for saved in ui.fields["saved-expressions"].childNodes
+		if saved.id?
+			ui.fields["saved-expressions"].removeChild(saved.id)
+
+	saved_expressions = expression.saved()
+	for cached_expression in saved_expressions
+		saved = expression.load(cached_expression)
+		new_saved = document.createElement("li")
+		load_button = document.createElement("button")
+
+		load_button.type = "button"
+		load_button.className = "btn load-button"
+		load_button.innerText = "Load"
+
+		load_button.onclick = ->
+			load_exp(this, ui, expression)
+
+		new_saved.innerHTML = saved.name
+		new_saved.id = "saved-expression-" + cached_expression
+		
+		ui.fields["saved-expressions"].appendChild(new_saved)
+		new_saved.appendChild(load_button)
+
+reload_saved(ui, expression)
+
+load_exp = (that, ui, expression) ->
+	id = that.parentNode.id.split("-")[2]
+	saved = expression.load(id)
+	if saved?
+		ui.fields.regexp.value = 				saved.regexp
+		ui.fields.global.checked = 			saved.global
+		ui.fields.ignorecase.checked = 	saved.ignorecase
+		ui.fields.multiline.checked = 	saved.multiline
+		ui.update_params()
+		ui.update_fields()
+		ui.fields.regexp.focus()
+		$('#expressions').modal("toggle")
 
 # Activate the modal
 $('#expressions').modal({

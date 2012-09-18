@@ -30,7 +30,17 @@
   };
 
   Expression.prototype.load = function(id) {
-    return void 0;
+    return locache.session.get(id);
+  };
+
+  Expression.prototype.saved = function() {
+    var saved;
+    saved = locache.session.get("saved");
+    if (saved != null) {
+      return saved;
+    } else {
+      return {};
+    }
   };
 
 }).call(this);

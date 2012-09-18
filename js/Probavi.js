@@ -10,7 +10,7 @@
 
 
 (function() {
-  var expression, field, get_result, param, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
+  var expression, field, get_result, load_exp, param, reload_saved, tester, ui, _i, _j, _len, _len1, _ref, _ref1;
 
   ui = new UI;
 
@@ -110,7 +110,56 @@
     ui.fields["save-regexp"].value = "";
     ui.fields["save-global"].checked = true;
     ui.fields["save-ignorecase"].checked = true;
-    return ui.fields["save-multiline"].checked = false;
+    ui.fields["save-multiline"].checked = false;
+    return reload_saved(ui, expression);
+  };
+
+  reload_saved = function(ui, expression) {
+    var cached_expression, load_button, new_saved, saved, saved_expressions, _k, _l, _len2, _len3, _ref2, _results;
+    _ref2 = ui.fields["saved-expressions"].childNodes;
+    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+      saved = _ref2[_k];
+      if (saved.id != null) {
+        ui.fields["saved-expressions"].removeChild(saved.id);
+      }
+    }
+    saved_expressions = expression.saved();
+    _results = [];
+    for (_l = 0, _len3 = saved_expressions.length; _l < _len3; _l++) {
+      cached_expression = saved_expressions[_l];
+      saved = expression.load(cached_expression);
+      new_saved = document.createElement("li");
+      load_button = document.createElement("button");
+      load_button.type = "button";
+      load_button.className = "btn load-button";
+      load_button.innerText = "Load";
+      load_button.onclick = function() {
+        return load_exp(this, ui, expression);
+      };
+      new_saved.innerHTML = saved.name;
+      new_saved.id = "saved-expression-" + cached_expression;
+      ui.fields["saved-expressions"].appendChild(new_saved);
+      _results.push(new_saved.appendChild(load_button));
+    }
+    return _results;
+  };
+
+  reload_saved(ui, expression);
+
+  load_exp = function(that, ui, expression) {
+    var id, saved;
+    id = that.parentNode.id.split("-")[2];
+    saved = expression.load(id);
+    if (saved != null) {
+      ui.fields.regexp.value = saved.regexp;
+      ui.fields.global.checked = saved.global;
+      ui.fields.ignorecase.checked = saved.ignorecase;
+      ui.fields.multiline.checked = saved.multiline;
+      ui.update_params();
+      ui.update_fields();
+      ui.fields.regexp.focus();
+      return $('#expressions').modal("toggle");
+    }
   };
 
   $('#expressions').modal({

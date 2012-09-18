@@ -28,4 +28,11 @@ Expression.prototype.save = (data) ->
 
 # Load from cache
 Expression.prototype.load = (id) ->
-	undefined
+	return locache.session.get(id)
+
+Expression.prototype.saved = () ->
+	saved = locache.session.get("saved")
+	if saved?
+		return saved
+	else
+		return {}

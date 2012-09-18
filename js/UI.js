@@ -20,6 +20,7 @@
       global: document.getElementById("global"),
       ignorecase: document.getElementById("ignorecase"),
       multiline: document.getElementById("multiline"),
+      "saved-expressions": document.getElementById("saved-expressions"),
       "save-name": document.getElementById("save-name"),
       "save-regexp": document.getElementById("save-regexp"),
       "save-global": document.getElementById("save-global"),

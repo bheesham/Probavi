@@ -18,7 +18,7 @@
 
   expression = new Expression;
 
-  get_result = function(ui, tester) {
+  get_result = function() {
     var item, match, result, _i, _len, _results;
     ui.fields.result.innerText = "";
     if (ui.values.subject.length > 0 && ui.values.regexp.length > 0) {
@@ -114,7 +114,7 @@
     return reload_saved(ui, expression);
   };
 
-  reload_saved = function(ui, expression) {
+  reload_saved = function() {
     var cached_expression, load_button, new_saved, saved, saved_expressions, _k, _l, _len2, _len3, _ref2, _results;
     _ref2 = ui.fields["saved-expressions"].childNodes;
     for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
@@ -146,7 +146,7 @@
 
   reload_saved(ui, expression);
 
-  load_exp = function(that, ui, expression) {
+  load_exp = function(that) {
     var id, saved;
     id = that.parentNode.id.split("-")[2];
     saved = expression.load(id);
@@ -158,6 +158,7 @@
       ui.update_params();
       ui.update_fields();
       ui.fields.regexp.focus();
+      get_result();
       return $('#expressions').modal("toggle");
     }
   };

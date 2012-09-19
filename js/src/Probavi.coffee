@@ -12,7 +12,7 @@ ui = new UI
 tester = new Tester
 expression = new Expression
 
-get_result = (ui, tester) ->
+get_result = ->
 	ui.fields.result.innerText = ""
 	if ui.values.subject.length > 0 and ui.values.regexp.length > 0
 		result = tester.run(ui.values.regexp, ui.values.subject, 
@@ -96,7 +96,7 @@ document.getElementById("save-btn").onclick = ->
 	reload_saved(ui, expression)
 
 # Do loading here
-reload_saved = (ui, expression) ->
+reload_saved = ->
 	# First, clear the saved ones
 	for saved in ui.fields["saved-expressions"].childNodes
 		if saved.id?
@@ -123,7 +123,7 @@ reload_saved = (ui, expression) ->
 
 reload_saved(ui, expression)
 
-load_exp = (that, ui, expression) ->
+load_exp = (that) ->
 	id = that.parentNode.id.split("-")[2]
 	saved = expression.load(id)
 	if saved?
@@ -134,6 +134,7 @@ load_exp = (that, ui, expression) ->
 		ui.update_params()
 		ui.update_fields()
 		ui.fields.regexp.focus()
+		get_result()
 		$('#expressions').modal("toggle")
 
 # Activate the modal

@@ -15,23 +15,23 @@ this.Expression = ->
 Expression.prototype.save = (data) ->
 	# Generate an ID based on the time
 	id = Math.round(new Date().getTime() / 1000)
-	locache.session.set(id, data)
+	locache.set(id, data)
 
 	# Be sure to add this to the list of saved
-	saved = locache.session.get("saved")
+	saved = locache.get("saved")
 	if saved?
 		saved.push(id)
 	else
 		saved = [id]
-	locache.session.set("saved", saved)
+	locache.set("saved", saved)
 	return id
 
 # Load from cache
 Expression.prototype.load = (id) ->
-	return locache.session.get(id)
+	return locache.get(id)
 
 Expression.prototype.saved = () ->
-	saved = locache.session.get("saved")
+	saved = locache.get("saved")
 	if saved?
 		return saved
 	else
